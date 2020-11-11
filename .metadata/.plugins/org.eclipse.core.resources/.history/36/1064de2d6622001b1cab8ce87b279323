@@ -1,0 +1,21 @@
+package usearraylist;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainArrayList {
+
+	public static void main(String[] args) {
+		//önemli yapý bu
+		List<String> strings=new ArrayList<>();
+		
+		ArrayList<String> strings2= new ArrayList<>();
+		
+		//add
+		strings.add("Adana");
+		strings.add("Ýstanbul");
+		strings.add("Bursa");
+		strings.add("Ýzmir");
+	}
+
+}

@@ -1,0 +1,21 @@
+package annotations;
+
+import java.lang.reflect.Method;
+
+public class MainAnnotation {
+
+	public static void main(String[] args) {
+		
+		Profile profile=new Profile();
+		// ? generic type i bilmiyorum sað tarafa bk ona göre ayarla
+		Class<?> profileClass= profile.getClass();
+		
+		//getMethods() tüm kalýtýlmýþlarý getirir declared Tanýmlýlarý getirir.
+		Method[] methods= profileClass.getDeclaredMethods();
+		for (Method method : methods) {
+			System.out.println("method : "+ method.getName());
+			
+		}
+	}
+
+}

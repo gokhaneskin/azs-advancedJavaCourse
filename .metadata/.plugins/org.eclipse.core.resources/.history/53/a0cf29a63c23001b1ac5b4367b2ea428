@@ -1,0 +1,8 @@
+package jaxbconf;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Section {
+
+}

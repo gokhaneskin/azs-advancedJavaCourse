@@ -1,0 +1,17 @@
+package useExecuters;
+
+public class Action implements Runnable{
+
+	int star;
+	int end;
+		
+	public Action(int star, int end) {
+		this.star = star;
+		this.end = end;
+	}
+
+	@Override
+	public void run() {
+		
+	}
+}

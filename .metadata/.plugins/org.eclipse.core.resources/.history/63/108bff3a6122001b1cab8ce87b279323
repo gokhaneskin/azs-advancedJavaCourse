@@ -1,0 +1,12 @@
+package pollymorphism;
+
+public class PolymorphismMain {
+
+	public static void main(String[] args) {
+		
+	}
+
+	public static void call(Base base ) {
+		base.write();
+	}
+}

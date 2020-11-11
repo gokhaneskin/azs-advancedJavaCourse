@@ -1,0 +1,31 @@
+package com.gokhan.threedays.restcontroller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gokhan.threedays.model.Note;
+import com.gokhan.threedays.repository.NoteRepository;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+@RestController
+public class NoteRestController {
+	
+	private final NoteRepository noteRepository;
+	public NoteRestController(NoteRepository noteRepository) {
+		this.noteRepository=noteRepository;
+	}
+	
+	@PostMapping("/noteInsert")
+	public Map<String, Object> noteInsert(@RequestBody Note entity) {	
+		Map<String, Object> linkedMap=new LinkedHashMap<>();
+		Note note=noteRepository.save(entity);
+		linkedMap.put("note", note);
+		return linkedMap;
+	}
+	
+}

@@ -1,0 +1,5 @@
+package com.gokhan.threedays.model;
+
+public class Note {
+
+}

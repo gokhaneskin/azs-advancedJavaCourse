@@ -1,0 +1,14 @@
+package jaxbconf;
+
+import javax.xml.bind.JAXBContext;
+
+public class MainXmlCreate {
+	
+	public static void main(String[] args) {
+		ProductWrapper productWrapper= new ProductWrapper();
+		ProductDTO dto=new ProductDTO();
+		productWrapper.setProducts(dto.result());
+		
+		JAXBContext context=JAXBContext.newInstance(ProductWrapper.class)
+	}
+}

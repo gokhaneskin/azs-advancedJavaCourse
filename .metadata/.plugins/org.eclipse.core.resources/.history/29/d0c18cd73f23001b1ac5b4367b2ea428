@@ -1,0 +1,10 @@
+package jaxbconf;
+
+public class MainXmlCreate {
+	
+	public static void main(String[] args) {
+		ProductWrapper productWrapper= new ProductWrapper();
+		ProductDTO dto=new ProductDTO();
+		productWrapper.setProducts(dto.result());
+	}
+}

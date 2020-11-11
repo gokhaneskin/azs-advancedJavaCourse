@@ -1,0 +1,32 @@
+package usearraylist;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainArrayList {
+
+	public static void main(String[] args) {
+		//önemli yapý bu
+		List<String> strings=new ArrayList<>();
+		
+		ArrayList<String> strings2= new ArrayList<>();
+		
+		//add
+		strings.add("Adana");
+		strings.add("Ýstanbul");
+		strings.add("Bursa");
+		strings.add("Ýzmir");
+	
+		String[] arr= {"Adana","Ýstanbul","Bursa","Ýzmir"};
+		
+		//Kümenin referans deðeri
+		System.out.println(arr);
+		
+		//Tek bir nesne içindeki deðerler
+		System.out.println(strings);
+		
+		//tek item
+		System.out.println(strings.get(0));
+	}
+
+}

@@ -1,0 +1,10 @@
+package userHashMap;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MainHashMap {
+
+	Map<String, Object> hm=new HashMap<>();
+	
+}

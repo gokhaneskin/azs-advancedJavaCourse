@@ -1,0 +1,11 @@
+package hibernateconf;
+
+import org.hibernate.SessionFactory;
+
+public class MainHibernate {
+	
+	SessionFactory sessionFactorynull;
+	public static void main(String[] args) {
+		
+	}
+}

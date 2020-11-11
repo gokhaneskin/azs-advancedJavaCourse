@@ -1,0 +1,12 @@
+package dbconnect;
+
+public class MainDB {
+
+	public static void main(String[] args) throws Exception{
+
+		DB db= new DB();
+		String query="create table user(uid int auto_increment, name varchar(255),surname varchar(255) ); ";
+		db.pre(query).execute();
+	}
+
+}

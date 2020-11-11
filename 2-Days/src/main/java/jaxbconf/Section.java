@@ -1,0 +1,26 @@
+package jaxbconf;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)//burası bir başlık olacak içinde de farklı attr. olacak
+public class Section {
+	
+	private String title;
+	private int number;
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
+}

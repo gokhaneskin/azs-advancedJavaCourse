@@ -1,0 +1,25 @@
+package com.gokhan.threedays.restcontroller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gokhan.threedays.repository.NoteRepository;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
+@RestController
+public class NoteRestController {
+	
+	private final NoteRepository noteRepository;
+	public NoteRestController(NoteRepository noteRepository) {
+		this.noteRepository=noteRepository;
+	}
+	
+	@PostMapping("/noteInsert")
+	public SomeEnityData postMethodName(@RequestBody SomeEnityData entity) {
+		//TODO: process POST request
+		
+		return entity;
+	}
+	
+}

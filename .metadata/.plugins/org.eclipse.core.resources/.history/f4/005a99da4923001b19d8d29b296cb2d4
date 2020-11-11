@@ -1,0 +1,12 @@
+package com.gokhan.threedays.model;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Note {
+
+	private int nid;
+	private String title;
+	private String detail;
+	private int number;
+}

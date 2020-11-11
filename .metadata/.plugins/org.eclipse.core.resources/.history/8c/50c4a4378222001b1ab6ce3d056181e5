@@ -1,0 +1,14 @@
+package userHashSet;
+
+import java.util.Set;
+import java.util.TreeSet;
+
+public class MainTreeSet {
+
+	public static void main(String[] args) {
+		
+		Set<String> treeSet = new TreeSet<>();
+		treeSet.add("Ali")
+	}
+
+}

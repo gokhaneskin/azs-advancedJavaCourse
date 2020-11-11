@@ -1,0 +1,9 @@
+package jaxbconf;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "rootProduct")
+public class ProductWrapper {
+
+	
+}

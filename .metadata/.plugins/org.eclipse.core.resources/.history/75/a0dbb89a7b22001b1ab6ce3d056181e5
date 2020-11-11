@@ -1,0 +1,11 @@
+package userHashMap;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class MainLinkedHashMap {
+
+	public static void main(String[] args) {
+		Map<EMap, Object> linkedHashMap= new LinkedHashMap<>();
+	}
+}

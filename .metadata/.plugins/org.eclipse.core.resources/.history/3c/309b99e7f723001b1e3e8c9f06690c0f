@@ -1,0 +1,15 @@
+package com.gokhan.fourdays.usethread;
+
+public class Action implements Runnable{
+	@Override
+	public void run() {
+		try {
+			for (;;) {
+				System.out.println("Action Call");
+				Thread.sleep(1000);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}	
+}

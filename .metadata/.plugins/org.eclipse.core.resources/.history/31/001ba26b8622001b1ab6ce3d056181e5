@@ -1,0 +1,14 @@
+package dbconnect;
+
+import java.sql.Connection;
+
+public class DB {
+	
+	private final String url= "";
+	private final String dbName="";
+	private final String userName="";
+	private final String userPass="";
+	private final String driver="org.h2q.Driver";
+	
+	private Connection connection=null;
+}

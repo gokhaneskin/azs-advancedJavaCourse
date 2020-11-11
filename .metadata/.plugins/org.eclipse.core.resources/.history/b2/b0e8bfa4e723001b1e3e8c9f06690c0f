@@ -1,0 +1,94 @@
+package com.gokhan.threedays.restcontroller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gokhan.threedays.model.Note;
+import com.gokhan.threedays.repository.NoteRepository;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+
+
+
+@RestController
+public class NoteRestController {
+	
+	@Autowired CacheManager cacheManager;
+	
+	private final NoteRepository noteRepository;
+	public NoteRestController(NoteRepository noteRepository) {
+		this.noteRepository=noteRepository;
+	}
+	
+	@PostMapping("/noteInsert")
+	public Map<String, Object> noteInsert(@RequestBody Note entity) {	
+		Map<String, Object> linkedMap=new LinkedHashMap<>();
+		Note note=noteRepository.save(entity);
+		linkedMap.put("note", note);
+		clearCache("getNotes");
+		return linkedMap;
+	}
+	
+	@GetMapping("/getNotes")
+	@Cacheable("getNotes")
+	public Map<String, Object> getNotes() {
+		Map<String, Object> linkedMap=new LinkedHashMap<>();
+		linkedMap.put("notelist", noteRepository.findAll());
+		return linkedMap;
+	}
+	
+	@GetMapping("/getNotesByNumber")
+	public Map<String, Object> getNotes(int number) {
+		Map<String, Object> linkedMap=new LinkedHashMap<>();
+		linkedMap.put("notelist", noteRepository.findNumber(number));
+		return linkedMap;
+	}
+	
+	@GetMapping("/getNoteById")
+	public Map<String, Object> getNoteById(@RequestBody Note note) {
+		Map<String, Object> linkedMap=new LinkedHashMap<>();
+		Optional<Note> optionalNote=noteRepository.findById(note.getNid());
+		linkedMap.put("statu", false);
+		linkedMap.put("note", null);
+		optionalNote.ifPresent(item->{
+			linkedMap.put("statu", true);
+			linkedMap.put("note", item);
+		});
+		return linkedMap ;
+	}
+	
+	@PutMapping(value="/noteUpdate")
+	public Map<String, Object> updateNote(@RequestBody Note entity) {
+		Map<String, Object> linkedMap=new LinkedHashMap<>();
+		Note note=noteRepository.saveAndFlush(entity);
+		linkedMap.put("status", true);
+		linkedMap.put("note", note);
+		return linkedMap;
+	}
+	
+	@DeleteMapping("/deleteNote")
+	public Map<String, Object> deleteNote(@RequestBody Note entity) {
+		Map<String, Object> linkedMap=new LinkedHashMap<>();
+		noteRepository.deleteById(entity.getNid());
+//try catch ile yakala
+		return linkedMap;
+	}
+	
+	public void clearCache(String cacheName) {
+		cacheManager.getCache(cacheName).clear();
+	}
+}

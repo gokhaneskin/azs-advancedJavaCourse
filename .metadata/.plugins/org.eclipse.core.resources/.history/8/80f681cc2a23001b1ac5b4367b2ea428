@@ -1,0 +1,26 @@
+package hibernateconf;
+
+import org.hibernate.Transaction;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+public class MainHibernate {
+	
+	SessionFactory sessionFactory=null;
+	public static void main(String[] args) {
+		MainHibernate mn=new MainHibernate();
+		mn.connect();
+	}
+	
+	public void connect() {
+		sessionFactory=NewHibernateUtil.getSessionFactory();
+	}
+	
+	public void productInsert() {
+		Session session=sessionFactory.openSession();
+		Transaction transaction=session.beginTransaction();
+		Product product=new Product();
+		product.setTitle("deneme");
+		product.setPrice(3500);
+	}
+}

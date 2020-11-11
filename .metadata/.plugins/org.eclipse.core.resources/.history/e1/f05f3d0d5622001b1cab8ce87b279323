@@ -1,0 +1,5 @@
+package annotations;
+
+privete @interface User {
+
+}

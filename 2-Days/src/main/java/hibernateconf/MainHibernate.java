@@ -1,0 +1,85 @@
+package hibernateconf;
+
+import org.hibernate.Transaction;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+public class MainHibernate {
+	
+	SessionFactory sessionFactory=null;
+	public static void main(String[] args) {
+		MainHibernate mn=new MainHibernate();
+		mn.connect();
+//		mn.productInsert();
+//		mn.productResult();
+//		mn.productDelete();
+		mn.productUpdate();
+	}
+	
+	public void connect() {
+		sessionFactory=NewHibernateUtil.getSessionFactory();
+	}
+	
+	public void productInsert() {
+		Session session=sessionFactory.openSession();
+		Transaction transaction=session.beginTransaction();
+		Product product=new Product();
+		product.setTitle("asd");
+		product.setPrice(4000);
+		int pid=(Integer)session.save(product);
+		System.out.println(pid);
+		transaction.commit();
+		session.close();
+	}
+	
+	public void productResult() {
+		Session session=sessionFactory.openSession();
+		List<Product> list=session
+				.createQuery("from Product where price > ?1")
+				.setParameter(1, 2600.00)
+				.list();
+		list.forEach(item->{
+			System.out.println(item.getPid()+" - "+item.getTitle()+" - "+item.getPrice());
+		});
+		
+	}
+	
+	public void productDelete() {
+		int pid=1;
+		Session session=sessionFactory.openSession();
+		Transaction transaction=session.beginTransaction();
+		try {
+			Product product= session.load(Product.class, pid);
+			System.out.println(product.getPid()+ " - "+product.getTitle()+" - "+product.getPrice());
+			session.delete(product);
+			transaction.commit();
+			System.out.println("Success");
+		} catch (Exception e) {
+			System.out.println("Hata"+e);
+		}finally {
+			session.close();
+		}
+	}
+	
+	public void productUpdate() {
+		int pid=2;
+		Session session=sessionFactory.openSession();
+		Transaction transaction=session.beginTransaction();
+		try {
+			Product product=session.load(Product.class, pid);
+			product.setTitle("değiştirdim");
+			session.saveOrUpdate(product);
+			transaction.commit();
+			System.out.println("Update Success");
+		} catch (Exception e) {
+			System.out.println("Error: "+e);
+		}finally {
+			session.close();
+		}
+				
+		
+	}
+}

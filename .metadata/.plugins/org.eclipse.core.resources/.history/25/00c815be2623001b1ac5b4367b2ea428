@@ -1,0 +1,15 @@
+package hibernateconf;
+
+import org.hibernate.SessionFactory;
+
+public class MainHibernate {
+	
+	public static void main(String[] args) {
+		MainHibernate mn=new MainHibernate();
+		mn.connect();
+	}
+	
+	public void connect() {
+		SessionFactory sessionFactory=NewHibernateUtil.getSessionFactory();
+	}
+}

@@ -1,0 +1,11 @@
+package com.gokhan.fourdays.usethread;
+
+public class MainThread {
+
+	public static void main(String[] args) {
+		Action action=new Action();
+		Thread thread=new Thread(action);
+		
+	}
+
+}

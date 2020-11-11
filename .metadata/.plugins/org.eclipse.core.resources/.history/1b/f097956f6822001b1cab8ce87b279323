@@ -1,0 +1,62 @@
+package usearraylist;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class MainArrayList {
+
+	public static void main(String[] args) {
+		//önemli yapý bu
+		List<String> strings=new ArrayList<>();
+		
+		ArrayList<String> strings2= new ArrayList<>();
+		
+		//add
+		strings.add("Adana");
+		strings.add("Ýstanbul");
+		strings.add("Bursa");
+		strings.add("Ýzmir");
+	
+		String[] arr= {"Adana","Ýstanbul","Bursa","Ýzmir"};
+		
+		//Kümenin referans deðeri
+		System.out.println(arr);
+		
+		//Tek bir nesne içindeki deðerler
+		System.out.println(strings);
+		
+		//tek item
+		System.out.println(strings.get(0));
+		System.out.println("########################");
+		for (String string : strings) {
+			System.out.println(string);
+		}
+		System.out.println("########################");
+		strings.forEach(item -> {
+			System.out.println("item : "+ item);
+		});
+		
+		System.out.println("########################");
+		//Sort
+		Collections.sort(strings);
+		System.out.println(strings);
+		
+		System.out.println("########################");
+		//remove
+		strings.remove(0);
+//		strings.remove(strings.get(0));
+		System.out.println(strings);
+		System.out.println("########################");
+		boolean status=strings.contains("Bursa");
+		System.out.println("status : "+ status);
+		
+		System.out.println("########################");
+		//indexof
+		int index=strings.indexOf("Adana");
+		System.out.println("index : "+index);
+		System.out.println("########################");
+	
+	}
+
+}

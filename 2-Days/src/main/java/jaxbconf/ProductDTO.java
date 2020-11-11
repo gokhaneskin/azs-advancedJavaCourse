@@ -1,0 +1,32 @@
+package jaxbconf;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import hibernateconf.NewHibernateUtil;
+
+public class ProductDTO {
+
+	SessionFactory sessionFactory= NewHibernateUtil.getSessionFactory();
+	
+	public List<Product> result(){
+		List<Product> products=new ArrayList<>();
+		Session session= sessionFactory.openSession();
+		List<hibernateconf.Product> products2=session.createQuery("from Product").list();
+		for (hibernateconf.Product product : products2) {
+			Section section=new Section();
+			section.setNumber(10);
+			section.setTitle("Category");
+			 Product prodct=new Product();
+			 prodct.setSection(section);
+			 prodct.setPid(product.getPid());
+			 prodct.setPrice(product.getPrice());
+			 prodct.setTitle(product.getTitle());
+			 products.add(prodct);
+		}
+		return products;
+	}
+}

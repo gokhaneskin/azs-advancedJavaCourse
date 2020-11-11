@@ -1,0 +1,16 @@
+package userHashMap;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MainHashMap {
+
+	public static void main(String[] args) {
+		Map<String, Object> hm=new HashMap<>();
+		hm.put("name","Ali");
+		hm.put("name","Veli");
+		hm.put("age",40);
+		System.out.println(hm);
+		System.out.println(hm.get("name"));
+	}
+}

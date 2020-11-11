@@ -1,0 +1,12 @@
+package useExecuters;
+
+public class MainExecuter {
+
+	public static void main(String[] args) {
+		Action action1=new Action(1, 10);
+		Action action2=new Action(10, 20);
+		Action action3=new Action(20, 30);
+		Action action4=new Action(30, 40);
+		Action action5=new Action(40, 50);
+	}
+}

@@ -1,0 +1,9 @@
+package annotations;
+
+public class Profile {
+
+	@User(id = 100,name = "Gokhan")
+	public void userProfile() {
+		
+	}
+}
